@@ -10,9 +10,10 @@ module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: {
     main: [
-      'webpack-hot-middleware/client?path=//localhost:3001/__webpack_hmr',
+      isDevelopment &&
+        'webpack-hot-middleware/client?path=//localhost:3001/__webpack_hmr',
       './src/index.js',
-    ],
+    ].filter(Boolean),
   },
   output: {
     filename: 'bundle.js',
