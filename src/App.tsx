@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { SectionHero } from './components/SectionHero';
 import { SectionPodcast } from './components/SectionPodcast';
 import { SectionBroadcast } from './components/SectionBroadcast';
+import { SectionGuest } from './components/SectionGuest';
 
 interface x {
   s: string;
@@ -17,6 +18,7 @@ function App() {
         <SectionHero />
         <SectionPodcast />
         <SectionBroadcast />
+        <SectionGuest />
       </main>
     </>
   );
