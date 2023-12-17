@@ -43,7 +43,7 @@ module.exports = {
         exclude: /\.global\.css$/,
       },
       {
-        test: /\.global\.css/,
+        test: /\.global\.css$/,
         use: ['style-loader', 'css-loader'],
       },
     ],

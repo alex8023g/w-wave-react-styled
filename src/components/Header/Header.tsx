@@ -125,7 +125,7 @@ export function Header() {
       <Nav>
         <List>
           {menu.map((mi) => (
-            <ListItem>
+            <ListItem key={mi.name}>
               <LinkNav href={mi.href}>{mi.name}</LinkNav>
             </ListItem>
           ))}

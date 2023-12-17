@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './sectionpodcast.css';
+// import styles from './sectionpodcast.css';
 import { Container } from '../Container';
 import { TitleH2 } from '../TitleH2';
 import styled from 'styled-components';
@@ -62,99 +62,96 @@ const podcasts = [
     bgImg: '../img/podcast-rules-112.png',
   },
 ];
+const TitleH2Podcast = styled(TitleH2)`
+  margin-bottom: 30px;
+  @media (max-width: 400px) {
+    margin-bottom: 20px;
+  }
+`;
 
-export function SectionPodcast() {
-  const TitleH2Podcast = styled(TitleH2)`
-    margin-bottom: 30px;
-    @media (max-width: 400px) {
-      margin-bottom: 20px;
-    }
-  `;
+const List = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+    // gap: 0px;
+  }
+`;
 
-  const List = styled.ul`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    @media (max-width: 1023px) {
-      grid-template-columns: 1fr;
-      // gap: 0px;
-    }
-  `;
+const ListItem = styled.li<{ bgimg: string }>`
+  position: relative;
+  padding: 35px 0 38px 142px;
+  //width: 100%;
+  // min-height: 140px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-image: url(${(props) => props.bgimg});
+  @media (max-width: 1023px) {
+    // width: 100%;
+  }
+  @media (max-width: 400px) {
+    padding: 97px 0px 28px 16px;
+    height: 100%;
+    background-size: 100% auto;
+  }
+  &:focus-visible {
+    outline: 1px solid #6d31ee;
+  }
+`;
 
-  const ListItem = styled.li<{ bgImg: string }>`
-    position: relative;
-    padding: 35px 0 38px 142px;
-    //width: 100%;
-    // min-height: 140px;
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-image: url(${(props) => props.bgImg});
-    @media (max-width: 1023px) {
-      // width: 100%;
-    }
-    @media (max-width: 400px) {
-      padding: 97px 0px 28px 16px;
-      height: 100%;
-      background-size: 100% auto;
-    }
-    &:focus-visible {
-      outline: 1px solid #6d31ee;
-    }
-  `;
+const Time = styled.span`
+  color: #121723;
+  font-family: 'Muller-Reg', 'sans-serif';
+  font-size: 12px;
+`;
 
-  const Time = styled.span`
-    color: #121723;
-    font-family: 'Muller-Reg', 'sans-serif';
-    font-size: 12px;
-  `;
-
-  const TitleH3 = styled.h3`
-    padding-top: 5px;
-    color: #121723;
-    font-family: 'Muller-Reg', 'sans-serif';
-    font-size: 20px;
-    @media (max-width: 400px) {
-      padding-top: 6.5px;
-      font-size: 16px;
-      line-height: normal;
-    }
-  `;
-
-  const Author = styled.span`
-    color: #a1a6b4;
-    font-family: 'Muller-Reg', 'sans-serif';
+const TitleH3 = styled.h3`
+  padding-top: 5px;
+  color: #121723;
+  font-family: 'Muller-Reg', 'sans-serif';
+  font-size: 20px;
+  @media (max-width: 400px) {
+    padding-top: 6.5px;
     font-size: 16px;
-    @media (max-width: 400px) {
-      font-size: 12px;
-    }
-  `;
+    line-height: normal;
+  }
+`;
 
-  const Date = styled.div`
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 3px 6px 1px 6px;
-    min-width: 51px;
-    background-color: #e6e8ec;
-    color: #121723;
-    text-align: center;
-    font-family: 'Muller-Reg', 'sans-serif';
-    font-size: 10px;
-    @media (max-width: 400px) {
-      top: 0;
-      bottom: auto;
-      padding: 3px 6px 2px 6px;
-    }
-  `;
+const Author = styled.span`
+  color: #a1a6b4;
+  font-family: 'Muller-Reg', 'sans-serif';
+  font-size: 16px;
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
+`;
 
+const Date = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 3px 6px 1px 6px;
+  min-width: 51px;
+  background-color: #e6e8ec;
+  color: #121723;
+  text-align: center;
+  font-family: 'Muller-Reg', 'sans-serif';
+  font-size: 10px;
+  @media (max-width: 400px) {
+    top: 0;
+    bottom: auto;
+    padding: 3px 6px 2px 6px;
+  }
+`;
+export function SectionPodcast() {
   return (
-    <section style={{ background: '#e6e8ec' }}>
+    <section id='podcasts' style={{ background: '#e6e8ec' }}>
       <Container>
         <TitleH2Podcast>Подкасты</TitleH2Podcast>
-
         <List>
           {podcasts.map(({ time, title, author, date, bgImg }) => (
-            <ListItem bgImg={bgImg}>
+            <ListItem key={title} bgimg={bgImg}>
               <Time>{time}</Time>
               <TitleH3>{title}</TitleH3>
               <Author>{author}</Author>
